@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+gem 'pry-byebug'
+gem 'weather-api'
+gem 'dotenv'
+gem 'activesupport'
+gem 'google-api-client', '0.9'
+gem 'rufus-scheduler'
+gem 'mios'
