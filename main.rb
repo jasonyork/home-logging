@@ -5,13 +5,16 @@ require 'dotenv'
 Dotenv.load
 require 'active_support'
 require 'rufus-scheduler'
-require './message_logging'
-require './loggers/outdoor_temperature_logger'
-require './loggers/thermostat_logger'
-require './loggers/power_logger'
-require './fusion_table_datasource'
-require './csv_datasource'
+require_relative './message_logging'
+require_relative './loggers/outdoor_temperature_logger'
+require_relative './loggers/thermostat_logger'
+require_relative './loggers/power_logger'
+require_relative './fusion_table_datasource'
+require_relative './csv_datasource'
 require 'pry-byebug'
+
+# Need this when dameonized
+Dir.chdir File.dirname(__FILE__)
 
 # DATASOURCE = FusionTableDatasource
 DATASOURCE = CsvDatasource

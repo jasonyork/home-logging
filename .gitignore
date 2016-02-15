@@ -1,2 +1,4 @@
 .env
 *.csv
+*.pid
+.DS_Store
