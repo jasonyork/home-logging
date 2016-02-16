@@ -11,7 +11,7 @@ require_relative './loggers/thermostat_logger'
 require_relative './loggers/power_logger'
 require_relative './fusion_table_datasource'
 require_relative './csv_datasource'
-require 'pry-byebug'
+# require 'pry-byebug'
 
 # Need this when dameonized
 Dir.chdir File.dirname(__FILE__)
