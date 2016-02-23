@@ -1,5 +1,6 @@
 require 'weather-api'
 require 'logging'
+require 'time'
 
 class OutdoorTemperatureLogger
   include MessageLogging
@@ -18,7 +19,7 @@ class OutdoorTemperatureLogger
 
     if last_data['Date'] != response.condition.date
       data = { "Temperature" => response.condition.temp,
-               "Date" => response.condition.date.strftime("%Y-%m-%d %H:%M:%S") }
+               "Date" => response.condition.date.iso8601 }
       @datasource.append_result(data)
       @last_data = data
       logger.debug("[OutdoorTemperatureLogger] recorded: #{data}")

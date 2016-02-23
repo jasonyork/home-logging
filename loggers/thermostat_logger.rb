@@ -1,5 +1,6 @@
 require 'mios'
 require 'logging'
+require 'time'
 
 class ThermostatLogger
   include MessageLogging
@@ -20,7 +21,7 @@ class ThermostatLogger
     current_data = [:operating_state, :heat_target, :cool_target,
      :mode, :temperature, :fan_mode].each_with_object({}) do |attribute, data|
        data[attribute.to_s.titleize] = thermostat.send(attribute).to_s
-    end.merge("Date" => Time.now.strftime("%Y-%m-%d %H:%M:%S"))
+    end.merge("Date" => Time.now.iso8601)
 
     unless last_result_matches_current?(current_data)
       @datasource.append_result(current_data)

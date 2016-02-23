@@ -1,4 +1,5 @@
 require 'mios'
+require 'time'
 
 class PowerLogger
   include MessageLogging
@@ -20,7 +21,7 @@ class PowerLogger
     legs.sort! { |a,b| a.id <=> b.id }
 
     reading_date = meter.last_reading_at
-    current_data = { "Date" => reading_date.strftime("%Y-%m-%d %H:%M:%S")}
+    current_data = { "Date" => reading_date.iso8601}
     { "Meter" => meter, "Leg 1" => legs[0], "Leg 2" => legs[1] }.each do |prefix, device|
       current_data.merge!(data_for_device(device, prefix))
     end
